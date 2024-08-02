@@ -1,6 +1,9 @@
 # Core
 django==4.2.8
 python-dotenv==1.0.0
+django-extensions==3.2.3
+django-model-utils==4.5.1
+
 
 # Deployment
 whitenoise==6.5.0
