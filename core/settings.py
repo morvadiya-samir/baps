@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     # Apps
     "core",
     "dashbord",
+    "mandir",
+    "khsetra",
+    "mandal",
 
     # Util
     "debug_toolbar",

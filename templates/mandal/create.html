@@ -1,12 +1,16 @@
 {% extends 'layout.html' %}
-{% block title %}   Mandir Edit {% endblock %}
+{% block title %}
+  Mandal Create
+{% endblock %}
 {% block content %}
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="card ">
+      
       <div class="card-body">
-        <form class='d-flex flex-column' action="/mandir/update/{{id}}/" method='post'>
+        
+        <form class='d-flex flex-column' action='/mandir/' method='post'>
         {% csrf_token %}
-          {{data.as_p }}  
+          {{ form }}
           <div class="mb-3">
             <button class="btn btn-primary d-grid w-100" type="submit">Submit</button>
           </div>

@@ -2,8 +2,16 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import models
-from core.models import Khsetra,Mandir,Mandal,Haribhakt
+from core.models import Mandal,Haribhakt
+from mandir.models import Mandir
+from khsetra.models import Khsetra
 
+class BaseForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(BaseForm, self).__init__(*args, **kwargs)
+        for field_name in self.fields:
+            self.fields[field_name].widget.attrs['class'] = 'form-control my-2'
+            self.fields[field_name].widget.attrs['placeholder'] = self.fields[field_name].label
 
 class RegisterForm(UserCreationForm):
 
@@ -42,20 +50,20 @@ class LoginForm(AuthenticationForm):
             self.add_error(None, "Invalid username or password")
         return cleaned_data
 
-class MandirForm(forms.ModelForm):
+class MandirForm(BaseForm):
     class Meta:
         model = Mandir
         fields = '__all__'
 
-# class KhsetraForm(forms.ModelForm):
-#     class Meta:
-#         model = Khsetra
-#         fields = '__all__'
+class KhsetraForm(BaseForm):
+    class Meta:
+        model = Khsetra
+        fields = '__all__'
 
-# class MandalForm(forms.ModelForm):
-#     class Meta:
-#         model = Mandal
-#         fields = '__all__'
+class MandalForm(BaseForm):
+    class Meta:
+        model = Mandal
+        fields = '__all__'
 
 # class HaribhaktForm(forms.ModelForm):
 #     class Meta:

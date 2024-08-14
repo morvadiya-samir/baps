@@ -6,15 +6,19 @@
   <!-- Content wrapper -->
   <div class="content-wrapper container-xxl my-3">
     <div class="card">
-      <h5 class="card-header">All Mandirs</h5>
+      <h5 class="card-header">All Khsetra</h5>
       <div class="table-responsive text-nowrap">
         <table class="table table-striped">
           <thead>
             <tr>
               <th>Id</th>
               <th>Name</th>
-              <th>City</th>
-              <th>Status</th>
+              <th>Number</th> 
+              <th>Mandir</th>
+              <th>Nirdeshak Name</th>
+              <th>Nirdeshak Contact Number</th>
+              <th>Sanyojak Name</th>
+              <th>Sanyojak Contact Number</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -23,7 +27,12 @@
             <tr>
               <td>{{i.id}}</td>
               <td><strong>{{i.name}}</strong></td>
-              <td>{{i.city}}</td>
+              <td>{{i.number}}</td>
+              <td>{{i.mandir_id}}</td>
+              <td>{{i.nirdeshak_name}}</td>
+              <td>{{i.nirdeshak_contact_number}}</td>
+              <td>{{i.sanyojak_name}}</td>
+              <td>{{i.sanyojak_contact_number}}</td>
               <td>
                 {% if i.status == 1 %}
                 <span class="badge bg-label-primary me-1">Desable</span>
@@ -39,7 +48,7 @@
                     <i class="bx bx-dots-vertical-rounded"></i>
                   </button>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/mandir/edit/{{ i.id }}/"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                    <a class="dropdown-item" href="/khsetra/edit/{{ i.id }}/"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                     <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
                   </div>
                 </div>

@@ -9,7 +9,10 @@ from .constants import FileConstants, HaribhaktConstants, MandalConstants
 from django.core.exceptions import ValidationError
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
-# from dataio import DataIOProvider
+# from dataio import DataIOProvider/
+from mandir.models import Mandir
+from khsetra.models import Khsetra
+from mandal.models import Mandal
 
 
 class BaseModel(TimeStampedModel):
@@ -83,34 +86,34 @@ class File(BaseModel, FileConstants):
         return data.get_headers()
 
 
-class Mandir(BaseModel):
-    name = models.CharField(_("Name of Mandir"), max_length=1024, blank=True, null=True)
-    city = models.CharField(_("City of Mandir"), max_length=1024, blank=True, null=True)
+# class Mandir(BaseModel):
+#     name = models.CharField(_("Name of Mandir"), max_length=1024, blank=True, null=True)
+#     city = models.CharField(_("City of Mandir"), max_length=1024, blank=True, null=True)
 
-    def __unicode__(self):
-        return "Name: " + str(self.name) + " City: " + str(self.city)
-
-
-class Khsetra(BaseModel):
-    name = models.CharField(_("Name of Khsetra"), max_length=1024, blank=True, null=True)
-    number = models.CharField(_("Unique number of Khsetra"), max_length=64, blank=True, null=True)
-    mandir = models.ForeignKey(Mandir, on_delete=models.CASCADE,blank=True, null=True)
-    nirdeshak_name = models.CharField(_("Name of Nirdeshak"), max_length=1024, blank=True, null=True)
-    nirdeshak_contact_number = models.CharField(_("Contact number of Nirdeshak"), max_length=16, blank=True, null=True)
-    sanyojak_name = models.CharField(_("Name of Sanyojak"), max_length=1024, blank=True, null=True)
-    sanyojak_contact_number = models.CharField(_("Contact number of Sanyojak"), max_length=16, blank=True, null=True)
+#     def __unicode__(self):
+#         return "Name: " + str(self.name) + " City: " + str(self.city)
 
 
-class Mandal(BaseModel):
-    name = models.CharField(_("Name of Mandal"), max_length=1024, blank=True, null=True)
-    number = models.CharField(_("Unique number of Mandal"), max_length=64, blank=True, null=True)
-    type = models.CharField(_("Mandal type"), choices=MandalConstants.MANDAL_TYPE_CHOICES, max_length=16)
-    khestra = models.ForeignKey(Khsetra, on_delete=models.CASCADE,blank=True, null=True)
-    sanchaalak_name = models.CharField(_("Name of Mandal Sanchalak"), max_length=1024, blank=True, null=True)
-    sanchaalak_contact_number = models.CharField(_("Contact number of Mandal Sanchalak"), max_length=16, blank=True,
-                                                 null=True)
-    nirikshak_name = models.CharField(_("Name of Nirikshak"), max_length=1024, blank=True, null=True)
-    nirikshak_contact_number = models.CharField(_("Contact number of Nirikshak"), max_length=16, blank=True, null=True)
+# class Khsetra(BaseModel):
+#     name = models.CharField(_("Name of Khsetra"), max_length=1024, blank=True, null=True)
+#     number = models.CharField(_("Unique number of Khsetra"), max_length=64, blank=True, null=True)
+#     mandir = models.ForeignKey(Mandir, on_delete=models.CASCADE,blank=True, null=True)
+#     nirdeshak_name = models.CharField(_("Name of Nirdeshak"), max_length=1024, blank=True, null=True)
+#     nirdeshak_contact_number = models.CharField(_("Contact number of Nirdeshak"), max_length=16, blank=True, null=True)
+#     sanyojak_name = models.CharField(_("Name of Sanyojak"), max_length=1024, blank=True, null=True)
+#     sanyojak_contact_number = models.CharField(_("Contact number of Sanyojak"), max_length=16, blank=True, null=True)
+
+
+# class Mandal(BaseModel):
+#     name = models.CharField(_("Name of Mandal"), max_length=1024, blank=True, null=True)
+#     number = models.CharField(_("Unique number of Mandal"), max_length=64, blank=True, null=True)
+#     type = models.CharField(_("Mandal type"), choices=MandalConstants.MANDAL_TYPE_CHOICES, max_length=16)
+#     khestra = models.ForeignKey(Khsetra, on_delete=models.CASCADE,blank=True, null=True)
+#     sanchaalak_name = models.CharField(_("Name of Mandal Sanchalak"), max_length=1024, blank=True, null=True)
+#     sanchaalak_contact_number = models.CharField(_("Contact number of Mandal Sanchalak"), max_length=16, blank=True,
+#                                                  null=True)
+#     nirikshak_name = models.CharField(_("Name of Nirikshak"), max_length=1024, blank=True, null=True)
+#     nirikshak_contact_number = models.CharField(_("Contact number of Nirikshak"), max_length=16, blank=True, null=True)
 
 
 class Haribhakt(BaseModel):
